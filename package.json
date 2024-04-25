@@ -1,0 +1,21 @@
+{
+  "name": "kempower-api-types",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Type defination for Kempower API.",
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "npx tsc --build tsconfig.json",
+    "clean": "npx tsc --build --clean",
+    "rebuild": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.2",
+    "type-fest": "^4.15.0",
+    "typescript": "^5.1.5"
+  }
+}
