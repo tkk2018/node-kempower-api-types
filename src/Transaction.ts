@@ -96,6 +96,9 @@ export interface Transaction extends TransactionBase {
    */
   activeStartTime?: string;
 
+  /**
+   * Note this the nozzle number.
+   */
   actualEVSEId: string | number;
 
   /**
@@ -206,6 +209,8 @@ export interface Transaction extends TransactionBase {
 
   /**
    * EVSE number that this transaction belongs to.
+   *
+   * Note this is the `connectorId` of the Connector object.
    */
   evseId: string;
 
