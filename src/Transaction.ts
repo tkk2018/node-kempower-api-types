@@ -1,4 +1,5 @@
 import { ConnectionType } from "./ConnectionType.js";
+import { EvClusterDetails } from "./EvClusterDetails.js";
 import { EvseType } from "./EvseType.js";
 import { IdToken } from "./IdToken.js";
 import { PaymentDetails } from "./PaymentDetails.js";
@@ -35,29 +36,6 @@ interface ChargingForecast {
   chargeTimesSeconds: Record<string, number>;
 
   histogram: ForecastTime[];
-};
-
-const ChargingPhaseList = [
-  "CHARGING",
-  "HANDSHAKE_NO_CURRENT",
-  "HANDSHAKE_NO_SOC",
-] as const;
-
-type ChargingPhase = typeof ChargingPhaseList[number];
-
-interface EvClusterDetails {
-  artificialId: string | null;
-  batteryChargeEstimate: number | null;
-  batterySizeEstimate: number | null;
-  chargingPhase: ChargingPhase | null;
-  closestMatchClusterName: string | null;
-  closestMatchId: string | null;
-  clusterId: string | null;
-  clusterName: string | null;
-  displayName: string | null;
-  initialClusterId: string | null;
-  matchScore: number | null;
-  stableEncodingPrediction: string | null;
 };
 
 const EvCommunicationStandardList = [
@@ -139,7 +117,7 @@ export interface Transaction extends TransactionBase {
 
   chargingForecast: ChargingForecast;
 
-  chargingForecastV3: ChargingForecast;
+  chargingForecastV3?: ChargingForecast;
 
   chargingForecastV3Model?: string;
 
@@ -150,7 +128,7 @@ export interface Transaction extends TransactionBase {
    */
   contractId?: string | null;
 
-  current: number;
+  current: number | null;
 
   /**
    * How much current is reserved by the charger in Amperes
@@ -259,14 +237,14 @@ export interface Transaction extends TransactionBase {
    */
   maxCostCents?: number;
 
-  maxPowerKw?: number;
+  maxPowerKw?: number | null;
 
   /**
    * ocpiConnectionProfileId If found, send session data to party related to this ocpi connection.
    */
   ocpiConnectionProfileId?: string | null;
 
-  partnerId?: string;
+  parentId?: string;
 
   /**
    * ISO-4217 code of the currency used
@@ -307,7 +285,7 @@ export interface Transaction extends TransactionBase {
   /**
    * Current power watts
    */
-  power: number;
+  power: number | null;
 
   powerLimitation?: PowerLimitation;
 
@@ -365,12 +343,12 @@ export interface Transaction extends TransactionBase {
   /**
    * How many seconds until battery capacity reaches xx% of the total (xx usually 80), or undefined if not known
    */
-  timeToBulk?: number;
+  timeToBulk?: number | null;
 
   /**
    * How many seconds until battery is full, or undefined if not known
    */
-  timeToFull?: number;
+  timeToFull?: number | null;
 
   /**
    * Can't be greater than maxCostCents
@@ -384,7 +362,7 @@ export interface Transaction extends TransactionBase {
 
   vehicle?: Vehicle;
 
-  voltage: number;
+  voltage: number | null;
 
   waitingForPaymentReservation?: boolean;
 };

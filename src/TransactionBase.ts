@@ -37,7 +37,7 @@ export interface TransactionBase extends TransactionIdentifier {
   /**
    * Power kilowatt present, max, avg
    */
-  powerKw?: number;
+  powerKw?: number | null;
 
   /**
    * Current SoC
