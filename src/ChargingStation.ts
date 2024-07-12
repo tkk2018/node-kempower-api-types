@@ -61,6 +61,8 @@ export interface ChargingStation extends ChargingStationIdentifier {
 
   location: KnownLocation;
 
+  locationUid?: string;
+
   /**
    * Maximum input current (amperes) of the station that it could theoretically take with current configuration. Equals to PMC input supply current. Dynamic limits (charging profiles) do not affect this.
    */

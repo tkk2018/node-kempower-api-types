@@ -36,3 +36,4 @@ COMMAND & CONTROL
 | timeToBulk          | Add nullable        | [Transaction](./src/Transaction.ts)           |
 | timeToFull          | Add nullable        | [Transaction](./src/Transaction.ts)           |
 | voltage             | Add nullable        | [Transaction](./src/Transaction.ts)           |
+| locationUid         | Add field           | [ChargingStations](./src/ChargingStation.ts)  |
