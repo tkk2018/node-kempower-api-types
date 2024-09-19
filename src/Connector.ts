@@ -7,13 +7,11 @@ export interface Connector {
    * Note that this is unique only within each charging station.
    * Meaning that the connector ID of charging station A may be the same as the connector ID of charging station B.
    * @requires
+   * @example "12"
    */
   connectorId: string;
 
-  /**
-   * @requires
-   */
-  lastTransaction: LastConnectorTransaction;
+  lastTransaction: LastConnectorTransaction | null;
 
   /**
    * @requires
@@ -27,6 +25,7 @@ export interface Connector {
 
   /**
    * @requires
+   * @example "Nozzle 1"
    */
   name: string;
 

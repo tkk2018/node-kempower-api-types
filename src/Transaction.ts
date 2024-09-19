@@ -35,6 +35,9 @@ interface ChargingForecast {
    */
   chargeTimesSeconds: Record<string, number>;
 
+  /**
+   * array may empty
+   */
   histogram: ForecastTime[];
 };
 
